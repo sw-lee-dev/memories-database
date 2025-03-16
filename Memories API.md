@@ -227,7 +227,7 @@ curl -v -X POST "http://127.0.0.1:4000/api/v1/auth/sign-up" \
 
 **응답 성공**
 ```bash
-HTTP/1.1 200 OK
+HTTP/1.1 201 CREATED
 
 {
   "code": "SU",
