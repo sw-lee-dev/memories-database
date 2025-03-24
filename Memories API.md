@@ -1117,8 +1117,8 @@ HTTP/1.1 500 Internal Server Error
 ```bash
 curl -v -X POST "http://127.0.0.1:4000/api/v1/test/memory" \
  -h "Authorization=Bearer XXXX" \
- -d "measurementTime=17 \
- -d "measurementTime=2 
+ -d "measurementScore=17 \
+ -d "errorCount=2 
 ```
 
 ##### Response
@@ -1303,8 +1303,8 @@ curl -v -X GET "http://127.0.0.1:4000/api/v1/test/concentration" \
 | measurementScore | Integer | 측정 성공 횟수 | O |
 | errorCount | Integer | 측정 오류 횟수 | O |
 | testDate | String | 검사한 날짜 (yyyy-MM-dd HH:mm) | O |
-| scoreGap | Integer | 직전 순번의 측정된 횟수 - 현재 순번의 측정된 횟수 | X |
-| errorGap | Integer | 직전 순번의 측정된 오류 횟수 - 현재 순번의 측정된 오류 횟수 | X |
+| scoreGap | Integer | 현재 순번의 측정된 횟수 - 직전 순번의 측정된 횟수 | X |
+| errorGap | Integer | 현재 순번의 측정된 오류 횟수 - 직전 순번의 측정된 오류 횟수 | X |
 
 **응답 성공**
 ```bash
@@ -1380,7 +1380,7 @@ curl -v -X GET "http://127.0.0.1:4000/api/v1/test/memory/recently" \
 |---|:---:|:---:|:---:|
 | code | String | 응답 결과 코드 | O |
 | message | String | 응답 결과 코드에 대한 설명 | O |
-| memoryTests | MemoryTest[] | 일기 리스트 | O |
+| memoryTests | MemoryTest[] | 기억력 검사 리스트 | O |
 
 ###### MemoryTest
 
@@ -1391,7 +1391,7 @@ curl -v -X GET "http://127.0.0.1:4000/api/v1/test/memory/recently" \
 | sequence | Integer | 사용자별 검사 순번 | O |
 | measurementTime | Integer | 측정된 시간 (검사 결과) | O |
 | testDate | String | 검사한 날짜 (yyyy-MM-dd hh:mm) | O |
-| gap | Integer | 직전 순번의 측정된 시간 - 현재 순번의 측정된 시간 (초단위) | X |
+| gap | Integer | 현재 순번의 측정된 시간 - 직전 순번의 측정된 시간 (초단위) | X |
 
 **응답 성공**
 ```bash
@@ -1465,7 +1465,7 @@ curl -v -X GET "http://127.0.0.1:4000/api/v1/test/concentration/recently" \
 |---|:---:|:---:|:---:|
 | code | String | 응답 결과 코드 | O |
 | message | String | 응답 결과 코드에 대한 설명 | O |
-| concentrationTests | ConcentrationTest[] | 일기 리스트 | O |
+| concentrationTests | ConcentrationTest[] | 집중력 검사 리스트 | O |
 
 ###### ConcentrationTest
 
@@ -1477,8 +1477,8 @@ curl -v -X GET "http://127.0.0.1:4000/api/v1/test/concentration/recently" \
 | measurementScore | Integer | 측정 성공 횟수 | O |
 | errorCount | Integer | 측정 오류 횟수 | O |
 | testDate | String | 검사한 날짜 (yyyy-MM-dd hh:mm) | O |
-| scoreGap | Integer | 직전 순번의 측정된 횟수 - 현재 순번의 측정된 횟수 | X |
-| errorGap | Integer | 직전 순번의 측정된 오류 횟수 - 현재 순번의 측정된 오류 횟수 | X |
+| scoreGap | Integer | 현재 순번의 측정된 횟수 - 직전 순번의 측정된 횟수 | X |
+| errorGap | Integer | 현재 순번의 측정된 오류 횟수 - 직전 순번의 측정된 오류 횟수 | X |
 
 **응답 성공**
 ```bash
